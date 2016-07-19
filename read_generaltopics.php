@@ -4,17 +4,17 @@ header("Content-Type: application/json; charset=latin1_swedish_ci");
 
 //include database and object files
 include_once 'config/database.php';
-include_once 'objects/subject.php';
+include_once 'objects/generaltopic.php';
 
 //instatiante database and area object
 $database = new Database();
 $db = $database->getConnection();
 
 //initialize object
-$subject = new Subject($db);
-$area_id = $_GET["area_id"];
+$generaltopic = new GeneralTopic($db);
+$eje_id = $_GET["eje_id"];
 //query areas
-$stmt = $subject -> readAll($area_id);
+$stmt = $generaltopic -> readAll($eje_id);
 $num = $stmt -> rowCount();
 
 // check if more than 0 record found
@@ -33,9 +33,8 @@ if($num>0){
         extract($row);
           
         $data .= '{';
-            $data .= '"id":"'  . $idAsignatura . '",';
-            $data .= '"name":"' . $nombreAsignatura . '",';
-            $data .= '"description":"' . $descripcionAsignatura. '",';
+            $data .= '"id":"'  . $idTemasGen . '",';
+            $data .= '"name":"' . $nombreTemasGen . '",';
             $data .= '"url":"' . $url . '"';
         $data .= '}'; 
           
@@ -43,6 +42,6 @@ if($num>0){
 } 
  
 // json format output 
-echo '{"subjects":[' . $data . ']}';
+echo '{"generaltopics":[' . $data . ']}';
 
 ?>

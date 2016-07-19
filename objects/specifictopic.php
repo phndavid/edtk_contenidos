@@ -1,11 +1,11 @@
 <?php 
 /**
-* Asignatura
+* Tema Especifico
 */
-class MainTopic{
+class SpecificTopic{
 	// database connection and table name 
     private $conn; 
-    private $table_name = "contenidos_eje"; 
+    private $table_name = "contenidos_temasEsp"; 
 
 	public $id;
 	public $name;
@@ -15,7 +15,7 @@ class MainTopic{
 		$this -> conn = $db;
 	}
 	// read subjects
-	function readAll($asignaturaId){
+	function readAll($generalId){
 	 
 	    // select all query
 	    $query = "SELECT 
@@ -23,9 +23,9 @@ class MainTopic{
 	            FROM 
 	                " . $this->table_name . "
 	            WHERE
-	              idAsignatura=".$asignaturaId."
+	              idTemasGen=".$generalId."
 	            ORDER BY 
-	                idAsignatura DESC";
+	                idEje DESC";
 	 
 	    // prepare query statement
 	    $stmt = $this->conn->prepare( $query );

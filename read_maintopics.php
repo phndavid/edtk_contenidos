@@ -11,7 +11,7 @@ $database = new Database();
 $db = $database->getConnection();
 
 //initialize object
-$maintopic = new Subject($db);
+$maintopic = new MainTopic($db);
 $asignatura_id = $_GET["asignatura_id"];
 //query areas
 $stmt = $maintopic -> readAll($asignatura_id);
@@ -35,6 +35,7 @@ if($num>0){
         $data .= '{';
             $data .= '"id":"'  . $idEje . '",';
             $data .= '"name":"' . $nombreEje . '",';
+            $data .= '"description":"' . $descripcionEje. '",';
             $data .= '"url":"' . $url . '"';
         $data .= '}'; 
           

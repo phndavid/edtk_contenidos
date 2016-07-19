@@ -10,6 +10,7 @@ class Subject{
 	public $id;
 	public $name;
 	public $description;
+	public $url;
 	function __construct($db)
 	{
 		$this -> conn = $db;
